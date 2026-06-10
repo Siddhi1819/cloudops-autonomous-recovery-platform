@@ -17,6 +17,14 @@ def health():
         "status": "healthy"
     })
 
+@app.route("/config")
+def config():
+    return jsonify({
+        "environment": os.getenv("ENVIRONMENT"),
+        "application": os.getenv("APPLICATION_NAME"),
+        "token_exists": bool(os.getenv("API_TOKEN"))
+    })
+
 @app.route("/incidents")
 def incidents():
     return jsonify([

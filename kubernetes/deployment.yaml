@@ -20,7 +20,7 @@ spec:
       containers:
       - name: incident-api
 
-        image: siddhi1819/incident-api:v1
+        image: siddhi1819/incident-api:v2
 
         imagePullPolicy: Always
 
@@ -52,3 +52,17 @@ spec:
               configMapKeyRef:
                 name: incident-api-config
                 key: APPLICATION_NAME
+          - name: API_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: incident-api-secret
+                key: API_TOKEN                
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+        
