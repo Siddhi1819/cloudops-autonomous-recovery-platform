@@ -3,9 +3,15 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 
 @app.route("/")
-def health():
+def home():
     return jsonify({
         "service": "incident-api",
+        "status": "healthy"
+    })
+
+@app.route("/health")
+def health():
+    return jsonify({
         "status": "healthy"
     })
 
