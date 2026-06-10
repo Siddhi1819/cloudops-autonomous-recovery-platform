@@ -39,3 +39,16 @@ spec:
             port: 5000
           initialDelaySeconds: 5
           periodSeconds: 5
+
+        env:
+          - name: ENVIRONMENT
+            valueFrom:
+              configMapKeyRef:
+                name: incident-api-config
+                key: ENVIRONMENT
+
+          - name: APPLICATION_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: incident-api-config
+                key: APPLICATION_NAME

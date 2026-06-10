@@ -1,11 +1,13 @@
 from flask import Flask, jsonify
+import os
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
     return jsonify({
-        "service": "incident-api",
+        "service": os.getenv("APPLICATION_NAME"),
+        "environment": os.getenv("ENVIRONMENT"),
         "status": "healthy"
     })
 
