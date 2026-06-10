@@ -1,0 +1,18 @@
+name: Build Incident API
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  docker-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: |
+          docker build -t incident-api:v1 ./application/incident-api
